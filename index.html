@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <!-- 设置移动设备视口，确保响应式设计正常工作 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System - Planetary exploration</title>
+    <!-- 引入主样式表 -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入Font Awesome图标库，用于移动菜单图标和各种UI元素 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 图标样式 - 结构页面特有的圆形图标容器 */
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: all 0.3s ease; /* 悬停动画过渡效果 */
+        }
+        
+        .icon-container i {
+            font-size: 40px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        /* 鼠标悬停效果 - 旋转和发光 */
+        .structure-item:hover .icon-container {
+            transform: rotate(15deg);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 鼠标悬停效果 - 图标放大 */
+        .structure-item:hover .icon-container i {
+            transform: scale(1.2);
+        }
+        
+        /* 图标颜色 - 每个对象使用不同的主题色 */
+        .sun-icon { color: #ffcc00; } /* 太阳图标使用黄色 */
+        .planets-icon { color: #66ccff; } /* 行星图标使用蓝色 */
+        .asteroids-icon { color: #cc9966; } /* 小行星图标使用棕色 */
+        .comets-icon { color: #99ccff; } /* 彗星图标使用浅蓝色 */
+        .satellites-icon { color: #cccccc; } /* 卫星图标使用灰色 */
+        .stars-icon { color: #ffffff; } /* 恒星图标使用白色 */
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 - 在移动设备上会变为固定悬浮菜单 -->
+    <nav class="top-nav">
+        <div class="nav-content">
+            <!-- 网站标志/名称 -->
+            <div class="logo">Space Explorer</div>
+            <!-- 移动端菜单切换按钮 - 在小屏幕上显示，包含辅助功能标签 -->
+            <button class="mobile-menu-toggle" aria-label="切换导航菜单">
+                <!-- 汉堡菜单图标 - 点击时会变成X图标 -->
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- 导航链接容器 - 在移动设备上会隐藏并通过按钮切换显示 -->
+            <div class="nav-links">
+                <!-- 各页面链接，active类表示当前页面(结构页) -->
+                <a href="index.html" class="active structure-link">STRUCTURE</a>
+                <a href="planet.html" class="planet-link">PLANET</a>
+                <a href="sun.html" class="sun-link">SUN</a>
+                <a href="moon.html" class="moon-link">MOON</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Planetary<br>exploration</h1>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="container">
+            <h2 class="section-title">What are the things that exist in our Solar System?</h2>
+            
+            <div class="structure-grid">
+                <div class="structure-item">
+                    <div class="item-icon">
+                        <div class="icon-container">
+                            <i class="fas fa-sun sun-icon"></i>
+                        </div>
+                    </div>
+                    <h3>Sun</h3>
+                    <p>Sun is the biggest star in the solar system and consists of 99.86% of all the mass of the solar system. It is located in the centre and is a sphere of hot plasma. Continuous nuclear reactions take place in its core which radiates energy in the form of light and infrared radiation.</p>
+                </div>
+
+                <div class="structure-item">
+                    <div class="item-icon">
+                        <div class="icon-container">
+                            <i class="fas fa-globe-americas planets-icon"></i>
+                        </div>
+                    </div>
+                    <h3>Planets</h3>
+                    <p>The solar system consists of eight planets, namely, Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune. Mercury is closest to the sun and also the smallest planet. It has no natural satellites.</p>
+                </div>
+
+                <div class="structure-item">
+                    <div class="item-icon">
+                        <div class="icon-container">
+                            <i class="fas fa-meteor asteroids-icon"></i>
+                        </div>
+                    </div>
+                    <h3>Asteroids</h3>
+                    <p>Asteroids are big and irregular shaped pieces of carbon, rock or metal which can be found mostly in the asteroid belt, orbiting the Sun between Mars and Jupiter. These are also often called minor planets.</p>
+                </div>
+
+                <div class="structure-item">
+                    <div class="item-icon">
+                        <div class="icon-container">
+                            <i class="fas fa-comet comets-icon"></i>
+                        </div>
+                    </div>
+                    <h3>Comets</h3>
+                    <p>These are small and irregular shaped objects composed of ice. It is believed that they generally come from the Kuiper belt. When comets come close to the Sun, due to the heat the ice vaporizes and leaves a beautiful tail behind them.</p>
+                </div>
+
+                <div class="structure-item">
+                    <div class="item-icon">
+                        <div class="icon-container">
+                            <i class="fas fa-satellite satellites-icon"></i>
+                        </div>
+                    </div>
+                    <h3>Satellites</h3>
+                    <p>The objects that revolve around the planets in the same direction as that of the planet are known as satellites. Moon is Earth's natural satellite. Satellites can also be man-made known as artificial satellites.</p>
+                </div>
+
+                <div class="structure-item">
+                    <div class="item-icon">
+                        <div class="icon-container">
+                            <i class="fas fa-star stars-icon"></i>
+                        </div>
+                    </div>
+                    <h3>Stars</h3>
+                    <p>A star is a celestial object that consists of a luminous spheroid of plasma which is bound by its own gravity. During the night, they are easily visible with a naked eye. These are grouped into constellations and asterisms.</p>
+                </div>
+            </div>
+
+            <div class="distance-info">
+                <p class="au-info">1 AU (Astronomical Unit) = 149,598,000 km</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

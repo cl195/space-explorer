@@ -1,0 +1,1269 @@
+/* 月球页面专用样式 */
+:root {
+    --moon-primary: #c2c5cc;
+    --moon-secondary: #9198a3;
+    --moon-accent: #8fb8ff;
+    --moon-dark: #1a1a2e;
+    --moon-light: #e6e6fa;
+}
+
+/* 导航栏样式 */
+.moon-nav {
+    background: linear-gradient(to bottom, rgba(26, 26, 46, 0.9), transparent);
+}
+
+/* 月亮链接动画 - 月相变化效果 */
+.nav-links a.moon-link {
+    transition: all 0.3s ease;
+}
+
+.nav-links a.moon-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    width: 8px;
+    height: 8px;
+    background: var(--moon-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--moon-primary);
+    transform: translateY(-50%) scale(0);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-links a.moon-link:hover,
+.nav-links a.moon-link.active {
+    color: var(--moon-primary);
+    letter-spacing: 3px;
+}
+
+.nav-links a.moon-link:hover::before,
+.nav-links a.moon-link.active::before {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+}
+
+/* 英雄区域样式 */
+.moon-hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.moon-parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.stars-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/stars-bg.jpg') repeat;
+    background-size: cover;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.moon-image {
+    position: absolute;
+    top: 50%;
+    right: 15%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: url('https://images.unsplash.com/photo-1522030299830-16b8d3d049fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80') no-repeat center center;
+    background-size: cover;
+    box-shadow: 
+        inset -20px -20px 60px rgba(0, 0, 0, 0.5),
+        0 0 15px var(--moon-primary),
+        0 0 30px rgba(194, 197, 204, 0.3);
+    transform: translateY(-50%);
+    z-index: 3;
+    animation: moonGlow 8s infinite alternate ease-in-out;
+    overflow: hidden;
+}
+
+.clouds-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.pngall.com/wp-content/uploads/2016/07/Cloud-Download-PNG.png') repeat-x;
+    background-size: cover;
+    opacity: 0.15;
+    z-index: 2;
+    animation: cloudsDrift 60s linear infinite;
+}
+
+@keyframes moonGlow {
+    0% {
+        box-shadow: 
+            inset -20px -20px 60px rgba(0, 0, 0, 0.5),
+            0 0 15px var(--moon-primary),
+            0 0 30px rgba(194, 197, 204, 0.3);
+    }
+    100% {
+        box-shadow: 
+            inset -20px -20px 60px rgba(0, 0, 0, 0.5),
+            0 0 20px var(--moon-primary),
+            0 0 40px rgba(194, 197, 204, 0.5);
+    }
+}
+
+@keyframes cloudsDrift {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 2000px 0;
+    }
+}
+
+.moon-title {
+    font-size: 9vw;
+    font-weight: bold;
+    color: var(--moon-light);
+    text-shadow: 0 0 30px rgba(194, 197, 204, 0.7);
+    position: absolute;
+    left: 8%;
+    z-index: 4;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    animation: fadeInFromLeft 1.5s ease-out;
+}
+
+@keyframes fadeInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 内容区域样式 */
+.moon-content {
+    position: relative;
+    background: var(--moon-dark);
+    color: var(--moon-light);
+    padding: 60px 0;
+}
+
+.moon-introduction {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+    animation-delay: 0.2s;
+}
+
+.intro-text:last-child {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 月相部分样式 */
+.moon-phases-section {
+    margin-bottom: 80px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--moon-primary);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--moon-accent);
+    animation: expandWidth 1.5s forwards ease-out;
+    animation-delay: 0.5s;
+}
+
+@keyframes expandWidth {
+    to {
+        width: 100%;
+    }
+}
+
+.phases-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.phase-item {
+    background: rgba(26, 26, 46, 0.6);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(194, 197, 204, 0.1);
+    backdrop-filter: blur(5px);
+    transform: translateY(30px);
+    opacity: 0;
+    animation: fadeInPhases 0.6s forwards;
+}
+
+.phase-item:nth-child(1) { animation-delay: 0.1s; }
+.phase-item:nth-child(2) { animation-delay: 0.2s; }
+.phase-item:nth-child(3) { animation-delay: 0.3s; }
+.phase-item:nth-child(4) { animation-delay: 0.4s; }
+.phase-item:nth-child(5) { animation-delay: 0.5s; }
+.phase-item:nth-child(6) { animation-delay: 0.6s; }
+.phase-item:nth-child(7) { animation-delay: 0.7s; }
+.phase-item:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeInPhases {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.phase-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--moon-accent);
+    box-shadow: 0 10px 20px rgba(143, 184, 255, 0.1);
+}
+
+.phase-animation {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(143, 184, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.phase-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 2s ease;
+}
+
+.phase-item:hover .phase-animation {
+    box-shadow: 0 0 30px rgba(143, 184, 255, 0.5);
+}
+
+.phase-item:hover .phase-img {
+    transform: scale(1.1) rotate(10deg);
+}
+
+/* 为每个月相图片设置特殊效果 */
+.phase-item:nth-child(1) .phase-animation {
+    background-color: #000;
+}
+
+.phase-item:nth-child(5) .phase-animation {
+    animation: pulsating 4s infinite alternate;
+}
+
+@keyframes pulsating {
+    0% {
+        box-shadow: 0 0 20px rgba(143, 184, 255, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(143, 184, 255, 0.5);
+    }
+}
+
+.phase-item h3 {
+    color: var(--moon-primary);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.phase-item p {
+    font-size: 0.9rem;
+    color: var(--moon-light);
+    line-height: 1.5;
+}
+
+/* 添加一个360度旋转动画展示 */
+.phase-item:hover:nth-child(5) .phase-img,
+.phase-item:hover:nth-child(1) .phase-img {
+    animation: rotateFullMoon 8s linear infinite;
+}
+
+@keyframes rotateFullMoon {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 相向旋转效果 */
+.phase-item:nth-child(4) .phase-img,
+.phase-item:nth-child(6) .phase-img {
+    transition: transform 0.5s ease;
+}
+
+.phase-item:hover:nth-child(4) .phase-img {
+    transform: rotate(20deg);
+}
+
+.phase-item:hover:nth-child(6) .phase-img {
+    transform: rotate(-20deg);
+}
+
+/* 各种月相样式 */
+.new-moon {
+    background-color: #1a1a2e;
+    box-shadow: 0 0 20px rgba(26, 26, 46, 0.5);
+}
+
+.waxing-crescent {
+    background: linear-gradient(90deg, #1a1a2e 50%, var(--moon-primary) 50%);
+    animation: waxCrescent 4s infinite alternate;
+}
+
+@keyframes waxCrescent {
+    0% {
+        background: linear-gradient(90deg, #1a1a2e 50%, var(--moon-primary) 50%);
+    }
+    100% {
+        background: linear-gradient(90deg, #1a1a2e 70%, var(--moon-primary) 30%);
+    }
+}
+
+.first-quarter {
+    background: linear-gradient(90deg, #1a1a2e 50%, var(--moon-primary) 50%);
+}
+
+.waxing-gibbous {
+    background: linear-gradient(90deg, #1a1a2e 25%, var(--moon-primary) 25%);
+}
+
+.full-moon {
+    background-color: var(--moon-primary);
+    animation: pulsating 4s infinite alternate;
+}
+
+@keyframes pulsating {
+    0% {
+        box-shadow: 0 0 20px rgba(143, 184, 255, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(143, 184, 255, 0.5);
+    }
+}
+
+.waning-gibbous {
+    background: linear-gradient(270deg, #1a1a2e 25%, var(--moon-primary) 25%);
+}
+
+.last-quarter {
+    background: linear-gradient(270deg, #1a1a2e 50%, var(--moon-primary) 50%);
+}
+
+.waning-crescent {
+    background: linear-gradient(270deg, #1a1a2e 50%, var(--moon-primary) 50%);
+    animation: waneCrescent 4s infinite alternate;
+}
+
+@keyframes waneCrescent {
+    0% {
+        background: linear-gradient(270deg, #1a1a2e 50%, var(--moon-primary) 50%);
+    }
+    100% {
+        background: linear-gradient(270deg, #1a1a2e 70%, var(--moon-primary) 30%);
+    }
+}
+
+/* 信息卡片网格样式 */
+.moon-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+}
+
+.moon-card {
+    position: relative;
+    background: rgba(26, 26, 46, 0.8);
+    border-radius: 15px;
+    padding: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(194, 197, 204, 0.1);
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+.card-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(143, 184, 255, 0.05) 0%, rgba(26, 26, 46, 0) 70%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.moon-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--moon-accent);
+    box-shadow: 0 15px 30px rgba(26, 26, 46, 0.5);
+}
+
+.moon-card:hover .card-backdrop {
+    opacity: 1;
+}
+
+.moon-card h2 {
+    color: var(--moon-primary);
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    position: relative;
+    display: inline-block;
+}
+
+.moon-card h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--moon-accent);
+    transition: width 0.3s ease;
+}
+
+.moon-card:hover h2::after {
+    width: 100%;
+}
+
+/* 事实卡片样式 */
+.fact-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.fact-item {
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(26, 26, 46, 0.5);
+    transition: all 0.3s ease;
+}
+
+.fact-item:hover {
+    background: rgba(143, 184, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.fact-item h3 {
+    color: var(--moon-accent);
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.fact-item p {
+    color: var(--moon-light);
+    font-size: 1.1rem;
+}
+
+/* 特征卡片样式 */
+.impact-container {
+    display: grid;
+    gap: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(26, 26, 46, 0.5);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(143, 184, 255, 0.1);
+    transform: translateX(10px);
+}
+
+.feature-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--moon-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.feature-icon i {
+    font-size: 20px;
+    color: var(--moon-accent);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+    background: var(--moon-accent);
+    transform: rotate(360deg);
+}
+
+.feature-item:hover .feature-icon i {
+    color: var(--moon-dark);
+}
+
+.feature-info h4 {
+    color: var(--moon-primary);
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.feature-info p {
+    color: var(--moon-light);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* 探索卡片样式 */
+.mission-timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.mission-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--moon-accent);
+    opacity: 0.5;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    animation: timelineEntry 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes timelineEntry {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: -34px;
+    width: 10px;
+    height: 10px;
+    background: var(--moon-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--moon-accent);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover::before {
+    transform: scale(1.5);
+}
+
+.timeline-date {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--moon-primary);
+    margin-bottom: 5px;
+}
+
+.timeline-content h4 {
+    color: var(--moon-accent);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.timeline-content p {
+    color: var(--moon-light);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.timeline-item.future {
+    opacity: 0.7;
+}
+
+.timeline-item.future .timeline-date {
+    color: var(--moon-accent);
+}
+
+/* 影响卡片样式 */
+.influence-content {
+    display: grid;
+    gap: 20px;
+}
+
+.influence-item {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(26, 26, 46, 0.5);
+    transition: all 0.3s ease;
+}
+
+.influence-item:hover {
+    background: rgba(143, 184, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.influence-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--moon-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    transition: all 0.3s ease;
+}
+
+.influence-icon i {
+    font-size: 25px;
+    color: var(--moon-accent);
+    transition: all 0.3s ease;
+}
+
+.influence-item:hover .influence-icon {
+    background: var(--moon-accent);
+}
+
+.influence-item:hover .influence-icon i {
+    color: var(--moon-dark);
+    transform: scale(1.2);
+}
+
+.influence-item h4 {
+    color: var(--moon-primary);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.influence-item p {
+    color: var(--moon-light);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* 地月系统部分样式 */
+.moon-earth-section {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(26, 26, 46, 0.4);
+    border: 1px solid rgba(194, 197, 204, 0.1);
+}
+
+.moon-earth-section h2 {
+    text-align: center;
+    color: var(--moon-primary);
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.earth-moon-visual {
+    height: 300px;
+    position: relative;
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.earth-moon-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 200px;
+}
+
+.earth {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/The_Blue_Marble_%28remastered%29.jpg/1200px-The_Blue_Marble_%28remastered%29.jpg') no-repeat center center;
+    background-size: cover;
+    box-shadow: 0 0 20px rgba(70, 130, 180, 0.5);
+    z-index: 2;
+}
+
+.orbit-path {
+    display: none; /* 隐藏轨道线 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 150px;
+    border: 1px dashed rgba(194, 197, 204, 0.3);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.moon-orbital {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--moon-primary);
+    box-shadow: 0 0 10px var(--moon-primary);
+    animation: orbitEarth 20s linear infinite;
+    z-index: 3;
+}
+
+@keyframes orbitEarth {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(200px) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) translateX(200px) rotate(-360deg);
+    }
+}
+
+.earth-moon-info {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.earth-moon-info p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+/* 页脚导航样式 */
+.footer-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.nav-button a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: var(--moon-light);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.nav-button a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--moon-dark), var(--moon-secondary));
+    border-radius: 50px;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.nav-button a:hover {
+    transform: translateY(-5px);
+}
+
+.nav-button a:hover::before {
+    filter: brightness(1.2);
+}
+
+.nav-button .icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.nav-button a:hover .icon {
+    transform: rotate(360deg);
+}
+
+.nav-button .text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.planet-button:hover {
+    color: #66ccff;
+}
+
+.planet-button:hover .icon {
+    background: #66ccff;
+    color: var(--moon-dark);
+}
+
+.sun-button:hover {
+    color: #ff751a;
+}
+
+.sun-button:hover .icon {
+    background: #ff751a;
+    color: var(--moon-dark);
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .moon-image {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .moon-info-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .moon-title {
+        font-size: 12vw;
+    }
+    
+    .moon-image {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .phases-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .moon-info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .fact-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .moon-hero {
+        height: 80vh;
+    }
+    
+    .moon-image {
+        right: 5%;
+        width: 200px;
+        height: 200px;
+    }
+    
+    .moon-title {
+        font-size: 14vw;
+        left: 5%;
+    }
+    
+    .earth-moon-container {
+        width: 300px;
+    }
+    
+    .orbit-path {
+        width: 250px;
+    }
+    
+    @keyframes orbitEarth {
+        0% {
+            transform: translate(-50%, -50%) rotate(0deg) translateX(125px) rotate(0deg);
+        }
+        100% {
+            transform: translate(-50%, -50%) rotate(360deg) translateX(125px) rotate(-360deg);
+        }
+    }
+    
+    .footer-navigation {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .moon-title {
+        font-size: 16vw;
+    }
+    
+    .moon-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .phase-item {
+        padding: 15px;
+    }
+    
+    .phase-animation {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .moon-card {
+        padding: 20px;
+    }
+    
+    .fact-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 页面加载动画 */
+.moon-page {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 月球资源部分样式 */
+.moon-resources-section {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+}
+
+.resources-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.resource-card {
+    background: rgba(26, 26, 46, 0.7);
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid rgba(194, 197, 204, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--moon-accent);
+    box-shadow: 0 10px 20px rgba(143, 184, 255, 0.1);
+}
+
+.resource-card h3 {
+    color: var(--moon-primary);
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    position: relative;
+    display: inline-block;
+}
+
+.resource-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: var(--moon-accent);
+    transition: width 0.3s ease;
+}
+
+.resource-card:hover h3::after {
+    width: 100%;
+}
+
+/* 地形卡片样式 */
+.terrain-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.terrain-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 2s ease;
+}
+
+.resource-card:hover .terrain-image img {
+    transform: scale(1.05);
+}
+
+.resource-description p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.terrain-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.terrain-stat {
+    background: rgba(26, 26, 46, 0.5);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.terrain-stat:hover {
+    background: rgba(143, 184, 255, 0.1);
+}
+
+.stat-name {
+    display: block;
+    color: var(--moon-accent);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    color: var(--moon-light);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* 阅读链接卡片样式 */
+.reading-links {
+    list-style: none;
+    padding: 0;
+}
+
+.reading-links li {
+    margin-bottom: 15px;
+}
+
+.reading-links a {
+    display: block;
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(26, 26, 46, 0.5);
+    color: var(--moon-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.reading-links a:hover {
+    background: rgba(143, 184, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.reading-links i {
+    color: var(--moon-accent);
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.reading-links a:hover i {
+    transform: rotate(45deg);
+}
+
+/* 全景图卡片样式 */
+.panorama-viewer {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.panorama-viewer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 5s ease;
+}
+
+.resource-card:hover .panorama-viewer img {
+    transform: scale(1.05) translateX(3%);
+}
+
+.panorama-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(26, 26, 46, 0.7);
+    padding: 15px;
+    border-radius: 50px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.panorama-overlay i {
+    margin-right: 10px;
+    color: var(--moon-accent);
+}
+
+.panorama-viewer:hover .panorama-overlay {
+    opacity: 1;
+}
+
+.panorama-caption {
+    font-size: 0.9rem;
+    color: var(--moon-light);
+    font-style: italic;
+    text-align: center;
+}
+
+/* 趣味事实卡片样式 */
+.fact-carousel {
+    position: relative;
+    padding: 20px;
+    background: rgba(26, 26, 46, 0.5);
+    border-radius: 10px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.fact-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fact-slide.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fact-slide p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.fact-slide i {
+    color: var(--moon-accent);
+    margin-right: 8px;
+}
+
+.fact-navigation {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.fact-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(194, 197, 204, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fact-dot.active {
+    background: var(--moon-accent);
+    transform: scale(1.3);
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    .resources-container {
+        grid-template-columns: 1fr;
+    }
+} 

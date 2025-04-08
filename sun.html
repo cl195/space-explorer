@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <!-- 设置移动设备视口，确保响应式设计正常工作 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System - The Sun</title>
+    <!-- 引入主样式表 -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入太阳页面特定样式 -->
+    <link rel="stylesheet" href="sun-styles.css">
+    <!-- 引入Font Awesome图标库，用于移动菜单图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="sun-page">
+    <!-- 顶部导航栏 - 使用sun-nav类添加太阳页面特定样式 -->
+    <nav class="top-nav sun-nav">
+        <div class="nav-content">
+            <!-- 网站标志/名称 -->
+            <div class="logo">Space Explorer</div>
+            <!-- 移动端菜单切换按钮 - 在小屏幕上显示 -->
+            <button class="mobile-menu-toggle">
+                <!-- 汉堡菜单图标 - 点击时会变成X图标 -->
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- 导航链接容器 - 在移动设备上会隐藏并通过按钮切换显示 -->
+            <div class="nav-links">
+                <!-- 各页面链接，active类表示当前页面 -->
+                <a href="index.html" class="structure-link">STRUCTURE</a>
+                <a href="planet.html" class="planet-link">PLANET</a>
+                <a href="sun.html" class="active sun-link">SUN</a>
+                <a href="moon.html" class="moon-link">MOON</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sun-hero">
+        <h1 class="sun-title">The Heart of<br>Our Solar System</h1>
+        <div class="sun-animation">
+            <div class="sun-core"></div>
+            <div class="sun-rays"></div>
+        </div>
+    </div>
+
+    <div class="sun-content">
+        <div class="container">
+            <div class="sun-introduction">
+                <p class="intro-text">
+                    The Sun is the star at the center of the Solar System. It is a massive, hot ball of plasma, 
+                    inflated and heated by energy produced by nuclear fusion reactions at its core. Part of this 
+                    energy is emitted from its surface as light, ultraviolet, and infrared radiation, providing 
+                    most of the energy for life on Earth.
+                </p>
+                <p class="intro-text">
+                    The Sun is a G-type main-sequence star (G2V), informally called a yellow dwarf, though its 
+                    light is actually white. It formed approximately 4.6 billion years ago from the gravitational 
+                    collapse of matter within a region of a large molecular cloud.
+                </p>
+            </div>
+
+            <div class="sun-info-grid">
+                <div class="sun-card facts">
+                    <h2>Key Facts</h2>
+                    <div class="fact-list">
+                        <div class="fact-item">
+                            <h3>Visual Brightness</h3>
+                            <p>−26.74 (V)</p>
+                        </div>
+                        <div class="fact-item">
+                            <h3>Absolute Magnitude</h3>
+                            <p>4.83</p>
+                        </div>
+                        <div class="fact-item">
+                            <h3>Metallicity</h3>
+                            <p>Z = 0.0122</p>
+                        </div>
+                        <div class="fact-item">
+                            <h3>Angular Size</h3>
+                            <p>0.527–0.545°</p>
+                        </div>
+                        <div class="fact-item">
+                            <h3>Age</h3>
+                            <p>4.6 billion years</p>
+                        </div>
+                        <div class="fact-item">
+                            <h3>Galactic Period</h3>
+                            <p>225–250 million years</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sun-card composition">
+                    <h2>Composition</h2>
+                    <div class="composition-chart">
+                        <div class="element-row">
+                            <div class="element-icon element-box">
+                                <span class="element-number">1</span>
+                                <span class="element-symbol">H</span>
+                                <span class="element-weight">1.008</span>
+                            </div>
+                            <div class="element-info">
+                                <h4>Hydrogen (H)</h4>
+                                <div class="chart-bar">
+                                    <div class="bar-fill hydrogen" style="width: 74.9%">
+                                        <span>74.9%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="element-row">
+                            <div class="element-icon element-box">
+                                <span class="element-number">2</span>
+                                <span class="element-symbol">He</span>
+                                <span class="element-weight">4.0026</span>
+                            </div>
+                            <div class="element-info">
+                                <h4>Helium (He)</h4>
+                                <div class="chart-bar">
+                                    <div class="bar-fill helium" style="width: 23.8%">
+                                        <span>23.8%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="element-row">
+                            <div class="element-icon element-box">
+                                <span class="element-number">8</span>
+                                <span class="element-symbol">O</span>
+                                <span class="element-weight">16.00</span>
+                            </div>
+                            <div class="element-info">
+                                <h4>Oxygen (O₂)</h4>
+                                <div class="chart-bar">
+                                    <div class="bar-fill oxygen" style="width: 1%">
+                                        <span>~1%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sun-card temperature">
+                    <h2>Temperature</h2>
+                    <div class="temp-list">
+                        <div class="temp-item">
+                            <h4>Core</h4>
+                            <p>15,700,000 K</p>
+                        </div>
+                        <div class="temp-item">
+                            <h4>Photosphere</h4>
+                            <p>5,772 K</p>
+                        </div>
+                        <div class="temp-item">
+                            <h4>Corona</h4>
+                            <p>5,000,000 K</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sun-card velocity">
+                    <h2>Velocity</h2>
+                    <div class="velocity-list">
+                        <div class="velocity-item">
+                            <h4>Orbit Galactic Center</h4>
+                            <p>251 km/s</p>
+                        </div>
+                        <div class="velocity-item">
+                            <h4>To Stellar Neighborhood</h4>
+                            <p>20 km/s</p>
+                        </div>
+                        <div class="velocity-item">
+                            <h4>To Cosmic Microwave Background</h4>
+                            <p>370 km/s</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sun-location">
+                <h2>Location in the Solar System</h2>
+                <div class="location-content">
+                    <div class="location-image">
+                        <img src="images/solar-system.jpg" alt="Solar System Location">
+                    </div>
+                    <div class="location-text">
+                        <p>
+                            The Sun has eight known planets orbiting it. This includes four terrestrial planets 
+                            (Mercury, Venus, Earth, and Mars), two gas giants (Jupiter and Saturn), and two ice 
+                            giants (Uranus and Neptune). The Solar System also has nine bodies generally considered 
+                            as dwarf planets and some more candidates, an asteroid belt, numerous comets, and a 
+                            large number of icy bodies which lie beyond the orbit of Neptune.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sun-neighborhood">
+                <h2>Celestial Neighbourhood</h2>
+                <div class="neighborhood-content">
+                    <div class="neighborhood-image">
+                        <img src="images/milky-way.jpg" alt="Celestial Neighbourhood">
+                    </div>
+                    <div class="neighborhood-text">
+                        <p>
+                            The Solar System is surrounded by the Local Interstellar Cloud, although it is not 
+                            clear if it is embedded in the Local Interstellar Cloud or if it lies just outside 
+                            the cloud's edge. Multiple other interstellar clouds also exist in the region within 
+                            300 light-years of the Sun, known as the Local Bubble.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sun-footer">
+                <div class="navigation-portal">
+                    <a href="index.html" class="portal-link structure">
+                        <span>Explore Structure</span>
+                    </a>
+                    <a href="planet.html" class="portal-link planets">
+                        <span>Discover Planets</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="sun-script.js"></script>
+</body>
+</html> 

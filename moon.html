@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <!-- 设置移动设备视口，确保响应式设计正常工作 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System - The Moon</title>
+    <!-- 引入主样式表 -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入月球页面特定样式 -->
+    <link rel="stylesheet" href="moon-styles.css">
+    <!-- 引入Font Awesome图标库，用于移动菜单图标和其他UI元素 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="moon-page">
+    <!-- 顶部导航栏 - 使用moon-nav类添加月球页面特定样式 -->
+    <nav class="top-nav moon-nav">
+        <div class="nav-content">
+            <!-- 网站标志/名称 -->
+            <div class="logo">Space Explorer</div>
+            <!-- 移动端菜单切换按钮 - 在小屏幕上显示 -->
+            <button class="mobile-menu-toggle">
+                <!-- 汉堡菜单图标 - 点击时会变成X图标 -->
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- 导航链接容器 - 在移动设备上会隐藏并通过按钮切换显示 -->
+            <div class="nav-links">
+                <!-- 各页面链接，active类表示当前页面 -->
+                <a href="index.html" class="structure-link">STRUCTURE</a>
+                <a href="planet.html" class="planet-link">PLANET</a>
+                <a href="sun.html" class="sun-link">SUN</a>
+                <a href="moon.html" class="active moon-link">MOON</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="moon-hero">
+        <div class="moon-parallax">
+            <div class="stars-layer"></div>
+            <div class="moon-image"></div>
+            <div class="clouds-layer"></div>
+        </div>
+        <h1 class="moon-title">Earth's Faithful<br>Companion</h1>
+    </div>
+
+    <div class="moon-content">
+        <div class="container">
+            <div class="moon-introduction">
+                <p class="intro-text">
+                    The Moon is Earth's only natural satellite and the fifth largest satellite in the Solar System. 
+                    It is the largest natural satellite relative to its planet in the Solar System. The Moon has been a 
+                    source of fascination for humanity throughout history, influencing our calendars, cultures, and 
+                    inspiring countless stories and myths.
+                </p>
+                <p class="intro-text">
+                    The Moon formed approximately 4.5 billion years ago, not long after Earth. The most widely 
+                    accepted explanation is that the Moon formed from the debris left over after a giant impact 
+                    between Earth and a Mars-sized body called Theia.
+                </p>
+            </div>
+
+            <div class="moon-phases-section">
+                <h2 class="section-title">Phases of the Moon</h2>
+                <div class="phases-container">
+                    <div class="phase-item">
+                        <div class="phase-animation">
+                            <img src="images/moon/New Moon.jpg" alt="New Moon" class="phase-img">
+                        </div>
+                        <h3>New Moon</h3>
+                        <p>When the Moon is between Earth and the Sun, the side facing Earth is not illuminated.</p>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-animation">
+                            <img src="https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/frames/730x730_1x1_30p/moon.0034.jpg" alt="Waxing Crescent" class="phase-img">
+                        </div>
+                        <h3>Waxing Crescent</h3>
+                        <p>As the Moon moves away from the Sun, a small crescent becomes visible.</p>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-animation">
+                            <img src="https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/frames/730x730_1x1_30p/moon.0071.jpg" alt="First Quarter" class="phase-img">
+                        </div>
+                        <h3>First Quarter</h3>
+                        <p>Half of the visible side of the Moon is illuminated.</p>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-animation">
+                            <img src="https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/frames/730x730_1x1_30p/moon.0106.jpg" alt="Waxing Gibbous" class="phase-img">
+                        </div>
+                        <h3>Waxing Gibbous</h3>
+                        <p>More than half of the visible side is illuminated, approaching full moon.</p>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-animation">
+                            <img src="https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/frames/730x730_1x1_30p/moon.0142.jpg" alt="Full Moon" class="phase-img">
+                        </div>
+                        <h3>Full Moon</h3>
+                        <p>The entire visible side of the Moon is illuminated.</p>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-animation">
+                            <img src="https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/frames/730x730_1x1_30p/moon.0177.jpg" alt="Waning Gibbous" class="phase-img">
+                        </div>
+                        <h3>Waning Gibbous</h3>
+                        <p>The illuminated portion starts to decrease.</p>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-animation">
+                            <img src="https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/frames/730x730_1x1_30p/moon.0213.jpg" alt="Last Quarter" class="phase-img">
+                        </div>
+                        <h3>Last Quarter</h3>
+                        <p>Half of the visible side is illuminated, opposite to first quarter.</p>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-animation">
+                            <img src="https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/frames/730x730_1x1_30p/moon.0249.jpg" alt="Waning Crescent" class="phase-img">
+                        </div>
+                        <h3>Waning Crescent</h3>
+                        <p>A small crescent remains visible before returning to new moon.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="moon-info-grid">
+                <div class="moon-card facts">
+                    <div class="card-backdrop"></div>
+                    <h2>Key Facts</h2>
+                    <div class="fact-list">
+                        <div class="fact-item">
+                            <h3>Distance from Earth</h3>
+                            <p>384,400 km (average)</p>
+                        </div>
+                        <div class="fact-item">
+                            <h3>Orbital Period</h3>
+                            <p>27.3 days</p>
+                        </div>
+                        <div class="fact-item">
+                            <h3>Diameter</h3>
+                            <p>3,474 km</p>
+                        </div>
+                        <div class="fact-item">
+                            <h3>Surface Gravity</h3>
+                            <p>1.62 m/s² (0.1654 g)</p>
+                        </div>
+                        <div class="fact-item">
+                            <h3>Temperature Range</h3>
+                            <p>-173°C to 127°C</p>
+                        </div>
+                        <div class="fact-item">
+                            <h3>Age</h3>
+                            <p>4.5 billion years</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="moon-card impact">
+                    <div class="card-backdrop"></div>
+                    <h2>Notable Features</h2>
+                    <div class="impact-container">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h4>Maria (Seas)</h4>
+                                <p>Large, dark plains formed by ancient volcanic eruptions</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h4>Craters</h4>
+                                <p>Impact craters formed by meteoroids and asteroids</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h4>Highlands</h4>
+                                <p>Light-colored, heavily cratered regions</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-route"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h4>Rilles</h4>
+                                <p>Long, narrow depressions resembling channels</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="moon-card exploration">
+                    <div class="card-backdrop"></div>
+                    <h2>Human Exploration</h2>
+                    <div class="mission-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1959</div>
+                            <div class="timeline-content">
+                                <h4>Luna 2</h4>
+                                <p>First spacecraft to reach the Moon's surface</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1969</div>
+                            <div class="timeline-content">
+                                <h4>Apollo 11</h4>
+                                <p>"That's one small step for man, one giant leap for mankind"</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1972</div>
+                            <div class="timeline-content">
+                                <h4>Apollo 17</h4>
+                                <p>Last human mission to the Moon</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2019</div>
+                            <div class="timeline-content">
+                                <h4>Chang'e 4</h4>
+                                <p>First landing on the far side of the Moon</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item future">
+                            <div class="timeline-date">Future</div>
+                            <div class="timeline-content">
+                                <h4>Artemis Program</h4>
+                                <p>NASA's plan to return humans to the Moon</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="moon-card influence">
+                    <div class="card-backdrop"></div>
+                    <h2>Influence on Earth</h2>
+                    <div class="influence-content">
+                        <div class="influence-item">
+                            <div class="influence-icon">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <h4>Tides</h4>
+                            <p>The Moon's gravity pulls on Earth's oceans, causing high and low tides</p>
+                        </div>
+                        <div class="influence-item">
+                            <div class="influence-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h4>Stabilization</h4>
+                            <p>Helps stabilize Earth's axial tilt, preventing extreme seasonal variations</p>
+                        </div>
+                        <div class="influence-item">
+                            <div class="influence-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h4>Calendars</h4>
+                            <p>Lunar cycles have influenced calendar systems throughout human history</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新添加的月球资源部分 -->
+            <div class="moon-resources-section">
+                <h2 class="section-title">Lunar Resources</h2>
+                
+                <div class="resources-container">
+                    <div class="resource-card terrain">
+                        <h3>Lunar Terrain</h3>
+                        <div class="terrain-image">
+                            <img src="images\moon\f3de9a48aa76cc6.jpg" alt="Lunar Terrain Map">
+                        </div>
+                        <div class="resource-description">
+                            <p>The lunar surface features mountains, valleys, and vast plains called maria. The near side (facing Earth) has more maria, while the far side is heavily cratered.</p>
+                            <div class="terrain-stats">
+                                <div class="terrain-stat">
+                                    <span class="stat-name">Highest Point:</span>
+                                    <span class="stat-value">10.8 km (Mons Huygens)</span>
+                                </div>
+                                <div class="terrain-stat">
+                                    <span class="stat-name">Deepest Crater:</span>
+                                    <span class="stat-value">9.1 km (South Pole-Aitken Basin)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card reading">
+                        <h3>Further Reading</h3>
+                        <ul class="reading-links">
+                            <li>
+                                <a href="https://moon.nasa.gov/" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    NASA's Moon Portal
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.lpi.usra.edu/lunar/" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Lunar and Planetary Institute
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://nssdc.gsfc.nasa.gov/planetary/planets/moonpage.html" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Moon Fact Sheet (NSSDC)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.nasa.gov/mission_pages/LRO/main/index.html" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Lunar Reconnaissance Orbiter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://moon.nasa.gov/resources/13/apollo-11-landing-site/" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Apollo 11 Landing Site
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card panorama">
+                        <h3>Lunar Panorama</h3>
+                        <div class="panorama-viewer">
+                            <img src="images\moon\unnamed.jpg" alt="Lunar Surface Panorama">
+                            <div class="panorama-overlay">
+                                <i class="fas fa-expand"></i>
+                                <span>View in Full Screen</span>
+                            </div>
+                        </div>
+                        <p class="panorama-caption">Apollo 11 mission panorama showing Buzz Aldrin on the lunar surface, July 20, 1969.</p>
+                    </div>
+                    
+                    <div class="resource-card quick-facts">
+                        <h3>Did You Know?</h3>
+                        <div class="fact-carousel">
+                            <div class="fact-slide active">
+                                <p><i class="fas fa-moon"></i> The Moon is gradually moving away from Earth at a rate of about 3.8 cm per year.</p>
+                            </div>
+                            <div class="fact-slide">
+                                <p><i class="fas fa-temperature-high"></i> Daytime temperatures on the Moon can reach 127°C (260°F), while nighttime temperatures can drop to -173°C (-280°F).</p>
+                            </div>
+                            <div class="fact-slide">
+                                <p><i class="fas fa-flag"></i> Six American flags were planted on the Moon during the Apollo missions, but due to solar radiation, they have likely been bleached white.</p>
+                            </div>
+                            <div class="fact-slide">
+                                <p><i class="fas fa-user-astronaut"></i> Only 12 humans have walked on the lunar surface, all of them American men.</p>
+                            </div>
+                            <div class="fact-navigation">
+                                <span class="fact-dot active"></span>
+                                <span class="fact-dot"></span>
+                                <span class="fact-dot"></span>
+                                <span class="fact-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="moon-earth-section">
+                <h2>The Moon and Earth</h2>
+                <div class="earth-moon-visual">
+                    <div class="earth-moon-container">
+                        <div class="earth"></div>
+                        <div class="orbit-path"></div>
+                        <div class="moon-orbital"></div>
+                    </div>
+                </div>
+                <div class="earth-moon-info">
+                    <p>
+                        The Earth-Moon system is unique in our solar system. The Moon is exceptionally large 
+                        relative to its parent planet, making it more of a binary system than a typical planet-satellite 
+                        relationship. Together, they orbit around a common barycenter (center of mass) which lies 
+                        about 4,671 km from Earth's center.
+                    </p>
+                    <p>
+                        The Moon is gradually moving away from Earth at a rate of approximately 3.8 cm per year 
+                        due to tidal interactions. Eventually, in the very distant future, the Moon will appear 
+                        smaller in our sky and total solar eclipses will no longer be possible.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-navigation">
+                <div class="nav-button">
+                    <a href="planet.html" class="planet-button">
+                        <span class="icon"><i class="fas fa-globe-americas"></i></span>
+                        <span class="text">Explore Planets</span>
+                    </a>
+                </div>
+                <div class="nav-button">
+                    <a href="sun.html" class="sun-button">
+                        <span class="icon"><i class="fas fa-sun"></i></span>
+                        <span class="text">Visit the Sun</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="moon-script.js"></script>
+</body>
+</html> 
