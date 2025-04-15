@@ -1,24 +1,24 @@
-// 创建星星背景
+// Create star background
 function createStars() {
-    // 检查是否已存在星星背景，避免重复创建
+    // Check if star background already exists to avoid duplicating
     if (document.querySelector('.star-background')) return;
     
-    // 创建星星容器
+    // Create star container
     const starBackground = document.createElement('div');
     starBackground.classList.add('star-background');
     document.body.appendChild(starBackground);
     
-    const numberOfStars = 350; // 增加星星数量，使效果更明显
+    const numberOfStars = 350; // Increase star count for a more noticeable effect
     
     for (let i = 0; i < numberOfStars; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
         
-        // 随机位置
-        const x = Math.random() * 100; // 使用百分比定位
+        // Random position
+        const x = Math.random() * 100; // Use percentage positioning
         const y = Math.random() * 100;
         
-        // 随机大小类
+        // Random size class
         const sizeClass = Math.random();
         if (sizeClass < 0.6) {
             star.classList.add('star-small');
@@ -28,8 +28,8 @@ function createStars() {
             star.classList.add('star-large');
         }
         
-        // 随机动画时间和延迟
-        const duration = 1.5 + Math.random() * 3; // 缩短动画时间
+        // Random animation duration and delay
+        const duration = 1.5 + Math.random() * 3; // Shorten animation time
         const delay = Math.random() * 3;
         
         star.style.left = `${x}%`;
@@ -37,7 +37,7 @@ function createStars() {
         star.style.setProperty('--twinkle-duration', `${duration}s`);
         star.style.setProperty('--twinkle-delay', `${delay}s`);
         
-        // 随机初始透明度
+        // Random initial opacity
         star.style.opacity = (0.3 + Math.random() * 0.7).toString();
         
         starBackground.appendChild(star);
@@ -46,9 +46,9 @@ function createStars() {
     console.log('Stars created:', document.querySelectorAll('.star').length);
 }
 
-// 确保星星在页面加载时立即创建，不等待DOMContentLoaded
+// Ensure stars are created immediately on page load, not waiting for DOMContentLoaded
 (function() {
-    // 在页面加载时立即执行
+    // Execute immediately on page load
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', createStars);
     } else {
@@ -56,7 +56,7 @@ function createStars() {
     }
 })();
 
-// 处理滚动效果
+// Handle scroll effects
 function handleScroll() {
     const scrollPosition = window.scrollY;
     const items = document.querySelectorAll('.structure-item');
@@ -73,7 +73,7 @@ function handleScroll() {
         }
     });
     
-    // 处理行星详细信息部分的显示
+    // Handle display of planet detail sections
     planetSections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
@@ -84,7 +84,7 @@ function handleScroll() {
     });
 }
 
-// 平滑滚动
+// Smooth scrolling
 function smoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -103,7 +103,7 @@ function smoothScroll() {
     });
 }
 
-// 视差效果
+// Parallax effect
 function parallaxEffect() {
     window.addEventListener('scroll', () => {
         const scrollPosition = window.scrollY;
@@ -115,20 +115,20 @@ function parallaxEffect() {
     });
 }
 
-// 页面切换动画
+// Page transition animations
 function setupPageTransitions() {
     const navLinks = document.querySelectorAll('.nav-links a');
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // 只有当点击的不是当前活动页面时才执行动画
+            // Only execute animation when clicking on a non-active page
             if (!this.classList.contains('active')) {
                 e.preventDefault();
                 
                 const targetHref = this.getAttribute('href');
                 const currentPage = document.body;
                 
-                // 根据目标页面类型选择不同的过渡效果
+                // Choose different transition effects based on target page type
                 let transitionClass = 'fade-out';
                 
                 if (this.classList.contains('structure-link')) {
@@ -141,23 +141,23 @@ function setupPageTransitions() {
                     transitionClass = 'slide-right-out';
                 }
                 
-                // 添加过渡动画类
+                // Add transition animation class
                 currentPage.classList.add(transitionClass);
                 
-                // 动画结束后跳转到新页面
+                // Navigate to new page after animation ends
                 setTimeout(() => {
                     window.location.href = targetHref;
-                }, 500); // 与CSS动画时间匹配
+                }, 500); // Match with CSS animation duration
             }
         });
     });
 }
 
-// 添加星星跟随鼠标移动的效果
+// Add star follow mouse movement effect
 function setupStarMouseEffect() {
     const starBackground = document.querySelector('.star-background');
     if (!starBackground) {
-        // 如果没有星星背景，则不执行
+        // Don't execute if star background doesn't exist
         console.log('No star background found for mouse effect');
         return;
     }
@@ -168,7 +168,7 @@ function setupStarMouseEffect() {
     let movementTimeout;
     let animationFrameId;
     
-    // 捕获鼠标位置
+    // Capture mouse position
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX / window.innerWidth;
         mouseY = e.clientY / window.innerHeight;
@@ -176,13 +176,13 @@ function setupStarMouseEffect() {
         isMoving = true;
         clearTimeout(movementTimeout);
         
-        // 如果鼠标停止移动3秒，重置isMoving
+        // Reset isMoving if mouse stops moving for 3 seconds
         movementTimeout = setTimeout(() => {
             isMoving = false;
         }, 3000);
     });
     
-    // 星星跟随鼠标微移动
+    // Stars follow mouse with slight movement
     function animateStars() {
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
@@ -190,27 +190,27 @@ function setupStarMouseEffect() {
         
         const stars = document.querySelectorAll('.star');
         stars.forEach((star, index) => {
-            // 每颗星星的移动幅度不同，形成视差效果
-            const moveFactorX = ((index % 5) - 2) * 0.3; // 增大移动范围
+            // Different movement range for each star creates parallax effect
+            const moveFactorX = ((index % 5) - 2) * 0.3; // Increase movement range
             const moveFactorY = (Math.floor(index / 5) % 5 - 2) * 0.3;
             
-            // 计算移动距离
+            // Calculate movement distance
             const moveX = (mouseX - 0.5) * moveFactorX; 
             const moveY = (mouseY - 0.5) * moveFactorY;
             
-            // 平滑移动
+            // Smooth movement
             star.style.transform = `translate(${moveX}%, ${moveY}%)`;
         });
         
         animationFrameId = requestAnimationFrame(animateStars);
     }
     
-    // 启动动画
+    // Start animation
     animateStars();
     console.log('Star mouse effect initialized');
 }
 
-// 自动启动星星鼠标跟随效果
+// Auto-start star mouse follow effect
 (function() {
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', setupStarMouseEffect);
@@ -219,57 +219,57 @@ function setupStarMouseEffect() {
     }
 })();
 
-// 随机创建流星
+// Randomly create meteors
 function createMeteors() {
-    // 确保有星星背景容器
+    // Ensure star background container exists
     let starBackground = document.querySelector('.star-background');
     if (!starBackground) {
-        // 如果没有星星背景，先创建一个
+        // Create a star background if one doesn't exist
         createStars();
         starBackground = document.querySelector('.star-background');
-        if (!starBackground) return; // 仍然失败则退出
+        if (!starBackground) return; // Exit if still fails
     }
     
-    // 清除可能存在的旧定时器
+    // Clear any existing timers
     if (window.meteorInterval) {
         clearInterval(window.meteorInterval);
     }
     
-    // 每隔一段时间创建一个流星
+    // Create a meteor at intervals
     window.meteorInterval = setInterval(() => {
-        // 30%的概率创建流星，提高出现概率
+        // 30% chance to create a meteor, increasing probability
         if (Math.random() > 0.3) return;
         
         const meteor = document.createElement('div');
         meteor.classList.add('meteor');
         
-        // 随机位置和角度
+        // Random position and angle
         const startX = Math.random() * 100;
-        const startY = -5; // 从顶部开始
-        const angle = 15 + Math.random() * 30; // 15-45度角
-        const length = 100 + Math.random() * 150; // 流星长度
+        const startY = -5; // Start from top
+        const angle = 15 + Math.random() * 30; // 15-45 degree angle
+        const length = 100 + Math.random() * 150; // Meteor length
         
-        // 设置流星样式
+        // Set meteor styles
         meteor.style.left = `${startX}%`;
         meteor.style.top = `${startY}%`;
         meteor.style.width = `${length}px`;
         meteor.style.transform = `rotate(${angle}deg)`;
         
-        // 添加到背景
+        // Add to background
         starBackground.appendChild(meteor);
         
-        // 流星完成动画后删除
+        // Remove meteor after animation completes
         setTimeout(() => {
             if (meteor.parentNode === starBackground) {
                 starBackground.removeChild(meteor);
             }
-        }, 1500); // 增加动画持续时间
-    }, 8000); // 减少间隔时间，平均每8秒可能出现一个流星
+        }, 1500); // Increase animation duration
+    }, 8000); // Reduce interval time, average possible appearance every 8 seconds
     
     console.log('Meteor generation started');
 }
 
-// 确保流星效果在页面加载后立即启动
+// Ensure meteor effect starts immediately after page load
 (function() {
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', createMeteors);
@@ -278,132 +278,119 @@ function createMeteors() {
     }
 })();
 
-// 页面加载完成后初始化移动导航功能
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('页面已加载，初始化导航菜单...'); // 调试日志，确认函数执行
+// Function to control mobile menu button visibility
+function checkMenuButtonVisibility() {
+    console.log("Checking menu button visibility");
+    const menuButton = document.querySelector('.mobile-menu-toggle');
     
-    // 获取移动端菜单切换按钮和导航链接元素
+    if (!menuButton) {
+        console.error("Menu button element not found");
+        return;
+    }
+    
+    // Get current window dimensions
+    const windowWidth = window.innerWidth;
+    
+    // Only check width, ignore height restrictions
+    if (windowWidth <= 768) {
+        console.log(`Show menu button: width=${windowWidth}px`);
+        menuButton.style.display = 'flex';
+        menuButton.style.visibility = 'visible';
+        menuButton.style.opacity = '1';
+    } else {
+        console.log(`Hide menu button: width=${windowWidth}px`);
+        menuButton.style.display = 'none';
+        menuButton.style.visibility = 'hidden';
+        menuButton.style.opacity = '0';
+    }
+}
+
+// Initialize navigation menu
+function initNavMenu() {
+    console.log('Initializing navigation menu...'); 
+    
+    // Get mobile menu toggle button and navigation links elements
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
-    // 验证导航菜单元素存在，增强代码健壮性
+    // Verify navigation menu elements exist
     if (!menuToggle) {
-        console.error('未找到菜单按钮元素！检查HTML结构是否正确。'); // 报错日志
-    } else {
-        console.log('找到菜单按钮元素'); // 成功日志
+        console.error('Menu button element not found!'); 
+        return;
     }
     
     if (!navLinks) {
-        console.error('未找到导航链接元素！检查HTML结构是否正确。'); // 报错日志
-    } else {
-        console.log('找到导航链接元素'); // 成功日志
+        console.error('Navigation links element not found!');
+        return;
     }
     
-    // 强制设置菜单按钮的可见性，解决显示问题
-    // 这是解决移动端导航按钮不显示的关键代码
-    if (menuToggle) {
-        menuToggle.style.display = 'flex'; // 使用flex布局显示按钮
-        menuToggle.style.opacity = '1'; // 确保按钮完全不透明
-        menuToggle.style.visibility = 'visible'; // 确保按钮可见
-        console.log('已强制显示菜单按钮'); // 调试日志
+    // Add click event handler for menu button
+    menuToggle.addEventListener('click', function(e) {
+        console.log('Menu button clicked'); 
+        e.preventDefault(); 
+        e.stopPropagation(); 
         
-        // 为菜单按钮添加点击事件处理程序
-        menuToggle.addEventListener('click', function(e) {
-            console.log('菜单按钮被点击'); // 调试日志
-            e.preventDefault(); // 阻止默认行为
-            e.stopPropagation(); // 阻止事件冒泡，避免触发文档点击事件
-            
-            // 切换导航菜单的显示状态
-            if (navLinks) {
-                navLinks.classList.toggle('active'); // 添加/移除active类来显示/隐藏菜单
-                console.log('菜单状态已切换:', navLinks.classList.contains('active') ? '显示' : '隐藏'); // 记录状态变化
-                
-                // 切换图标 (从汉堡图标变为X，或反之)，提供视觉反馈
-                const icon = this.querySelector('i');
-                if (icon) {
-                    if (icon.classList.contains('fa-bars')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times'); // 切换为X图标
-                        console.log('图标已从汉堡变为X'); // 记录图标变化
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars'); // 切换回汉堡图标
-                        console.log('图标已从X变为汉堡'); // 记录图标变化
-                    }
-                } else {
-                    console.error('未找到图标元素，可能需要检查HTML结构'); // 报错日志
-                }
+        // Toggle navigation menu display state
+        navLinks.classList.toggle('active'); 
+        
+        // Toggle icon
+        const icon = this.querySelector('i');
+        if (icon) {
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times'); 
             } else {
-                console.error('无法切换菜单，因为未找到导航链接元素'); // 报错日志
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars'); 
             }
-            
-            return false; // 防止事件继续传播
-        });
-    }
+        }
+        
+        return false; 
+    });
     
-    // 点击菜单外区域时关闭菜单，增强用户体验
-    if (navLinks && menuToggle) {
-        document.addEventListener('click', function(e) {
-            // 如果菜单处于打开状态，且点击位置不在菜单和按钮上
-            if (navLinks.classList.contains('active') && 
-                !navLinks.contains(e.target) && 
-                e.target !== menuToggle && 
-                !menuToggle.contains(e.target)) {
-                navLinks.classList.remove('active'); // 关闭菜单
-                console.log('菜单外部被点击，关闭菜单'); // 调试日志
+    // Close menu when clicking outside the menu area
+    document.addEventListener('click', function(e) {
+        if (navLinks.classList.contains('active') && 
+            !navLinks.contains(e.target) && 
+            e.target !== menuToggle && 
+            !menuToggle.contains(e.target)) {
+            navLinks.classList.remove('active'); 
+            
+            // Restore hamburger icon
+            const icon = menuToggle.querySelector('i');
+            if (icon && icon.classList.contains('fa-times')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    });
+    
+    // Close menu when clicking navigation links
+    const navLinksItems = document.querySelectorAll('.nav-links a');
+    navLinksItems.forEach(link => {
+        link.addEventListener('click', function() {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active'); 
                 
-                // 恢复汉堡图标
+                // Restore hamburger icon
                 const icon = menuToggle.querySelector('i');
-                if (icon && icon.classList.contains('fa-times')) {
+                if (icon) {
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
                 }
             }
         });
-        
-        // 点击导航链接时关闭菜单，提升用户体验
-        const navLinksItems = document.querySelectorAll('.nav-links a');
-        navLinksItems.forEach(link => {
-            link.addEventListener('click', function() {
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active'); // 关闭菜单
-                    console.log('菜单链接被点击，关闭菜单'); // 调试日志
-                    
-                    // 恢复汉堡图标
-                    const icon = menuToggle.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                }
-            });
-        });
-    }
-    
-    // 监听窗口大小变化，确保在不同设备上导航按钮正确显示
-    window.addEventListener('resize', function() {
-        console.log('窗口大小已改变，检查导航菜单状态'); // 调试日志
-        if (menuToggle) {
-            // 根据窗口宽度动态调整按钮显示状态
-            menuToggle.style.display = window.innerWidth <= 1024 ? 'flex' : 'none';
-            console.log('窗口宽度:', window.innerWidth, '菜单按钮显示状态:', menuToggle.style.display); // 记录状态变化
-        }
     });
+}
+
+// Set up planet card interactions
+function setupPlanetCardInteractions() {
+    console.log('Setting up planet card interactions');
     
-    // 延迟检查导航状态，确保DOM完全加载后按钮仍然可见
-    // 这是解决某些浏览器中菜单按钮可能在页面加载后被覆盖的问题
-    setTimeout(function() {
-        console.log('延迟检查导航菜单状态'); // 调试日志
-        if (menuToggle && window.innerWidth <= 1024) {
-            menuToggle.style.display = 'flex'; // 再次确认菜单按钮可见
-            console.log('已重新确认菜单按钮可见状态'); // 调试日志
-        }
-    }, 500); // 延迟500毫秒执行，确保DOM已完全渲染
-    
-    // Add animation to planet detail sections when scrolled into view
+    // Handle scroll animations for planet detail areas
     const planetDetailSections = document.querySelectorAll('.planet-detail-section');
     
-    // Function to check if an element is in viewport
+    // Check if element is in viewport
     function isInViewport(element) {
         const rect = element.getBoundingClientRect();
         return (
@@ -412,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
     
-    // Function to handle scroll events for animations
+    // Handle scroll events
     function handleScroll() {
         planetDetailSections.forEach(section => {
             if (isInViewport(section)) {
@@ -421,17 +408,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Initial check on page load
+    // Initial check
     handleScroll();
     
     // Check on scroll
     window.addEventListener('scroll', handleScroll);
     
-    // Smooth scroll to planet details when clicking on planet cards
+    // Add click event to planet cards for smooth scrolling
     const planetCards = document.querySelectorAll('.planet-card');
     planetCards.forEach(card => {
         card.addEventListener('click', function(e) {
-            // Get the target from the onclick attribute
+            // Get target from onclick attribute
             const href = this.getAttribute('onclick').replace("location.href='", "").replace("'", "");
             if (href.startsWith('#')) {
                 e.preventDefault();
@@ -462,19 +449,146 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.remove('touch-active');
         });
     });
+}
+
+// Create star background
+function createStarBackground() {
+    const starContainer = document.createElement('div');
+    starContainer.className = 'star-background';
+    document.body.appendChild(starContainer);
     
-    // 初始化平滑滚动
-    smoothScroll();
+    // Create 150 stars
+    for (let i = 0; i < 150; i++) {
+        createStar(starContainer);
+    }
+}
+
+// Create a single star
+function createStar(container) {
+    const star = document.createElement('div');
+    star.className = 'star';
     
-    // 初始化视差效果
-    parallaxEffect();
+    // Determine star type based on size
+    const size = Math.random();
+    if (size < 0.3) star.classList.add('star-small');
+    else if (size < 0.8) star.classList.add('star-medium');
+    else star.classList.add('star-large');
     
-    // 设置页面切换动画
+    // Random position
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.top = `${Math.random() * 100}vh`;
+    
+    // Random twinkle animation
+    star.style.setProperty('--twinkle-duration', `${2 + Math.random() * 3}s`);
+    star.style.setProperty('--twinkle-delay', `${Math.random() * 5}s`);
+    
+    container.appendChild(star);
+}
+
+// Create random meteors
+function createRandomMeteors() {
+    // Create a meteor every 3-8 seconds
+    setInterval(() => {
+        createMeteor();
+    }, 3000 + Math.random() * 5000);
+}
+
+// Create a single meteor
+function createMeteor() {
+    const meteor = document.createElement('div');
+    meteor.className = 'meteor';
+    
+    // Meteor width (length)
+    const width = 100 + Math.random() * 200;
+    meteor.style.width = `${width}px`;
+    
+    // Random position and angle
+    meteor.style.left = `${Math.random() * 100}vw`;
+    meteor.style.top = `${Math.random() * 50}vh`;
+    meteor.style.transform = `rotate(${30 + Math.random() * 30}deg)`;
+    
+    document.body.appendChild(meteor);
+    
+    // Remove meteor after animation ends
+    setTimeout(() => {
+        meteor.remove();
+    }, 1500);
+}
+
+// Adjust title layout for mobile screen sizes
+function adjustTitleLayout() {
+    console.log("Adjusting title layout");
+    
+    // Get current window dimensions
+    const windowWidth = window.innerWidth;
+    
+    // Get all title elements
+    const heroTitles = document.querySelectorAll('.hero-title, .sun-title, .moon-title');
+    
+    // If on mobile device size (consistent with menu button visibility logic)
+    if (windowWidth <= 768) {
+        // Apply mobile styles
+        heroTitles.forEach(title => {
+            title.style.textAlign = 'center';
+            title.style.position = 'relative';
+            title.style.left = '0';
+            title.style.width = '100%';
+        });
+        
+        // Adjust title container alignment
+        const heroContents = document.querySelectorAll('.hero-content');
+        heroContents.forEach(content => {
+            content.style.justifyContent = 'center';
+            content.style.alignItems = 'center';
+            content.style.textAlign = 'center';
+        });
+    } else {
+        // Reset to desktop styles
+        heroTitles.forEach(title => {
+            title.style.textAlign = '';
+            title.style.position = '';
+            title.style.left = '';
+            title.style.width = '';
+        });
+        
+        // Reset title container alignment
+        const heroContents = document.querySelectorAll('.hero-content');
+        heroContents.forEach(content => {
+            content.style.justifyContent = '';
+            content.style.alignItems = '';
+            content.style.textAlign = '';
+        });
+    }
+}
+
+// Execute when page finishes loading
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM fully loaded");
+    
+    // Initial menu button check
+    checkMenuButtonVisibility();
+    
+    // Initial title layout adjustment
+    adjustTitleLayout();
+    
+    // Recheck when window size changes
+    window.addEventListener('resize', function() {
+        checkMenuButtonVisibility();
+        adjustTitleLayout();
+    });
+    
+    // Initialize navigation menu
+    initNavMenu();
+    
+    // Add touch effects for each planet card
+    setupPlanetCardInteractions();
+    
+    // Set up page transition animations
     setupPageTransitions();
     
-    // 添加页面进入动画
-    document.body.classList.add('fade-in');
+    // Create star background
+    createStarBackground();
     
-    // 添加星星鼠标跟随效果
-    setupStarMouseEffect();
+    // Add random meteors
+    createRandomMeteors();
 }); 

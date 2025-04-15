@@ -1,4 +1,4 @@
-/* 月球页面专用样式 */
+/* Custom styles for the Moon page - Defines color schemes, animations, and layout specific to the lunar exploration section */
 :root {
     --moon-primary: #c2c5cc;
     --moon-secondary: #9198a3;
@@ -7,12 +7,12 @@
     --moon-light: #e6e6fa;
 }
 
-/* 导航栏样式 */
+/* Navigation bar styling - Gradient background for smooth transition */
 .moon-nav {
     background: linear-gradient(to bottom, rgba(26, 26, 46, 0.9), transparent);
 }
 
-/* 月亮链接动画 - 月相变化效果 */
+/* Moon link animation - Lunar phase change effect for navigation links */
 .nav-links a.moon-link {
     transition: all 0.3s ease;
 }
@@ -44,7 +44,7 @@
     opacity: 1;
 }
 
-/* 英雄区域样式 */
+/* Hero section styling - Full viewport height with parallax effect */
 .moon-hero {
     height: 100vh;
     width: 100%;
@@ -155,7 +155,7 @@
     }
 }
 
-/* 内容区域样式 */
+/* Content area styling - Dark background with light text for readability */
 .moon-content {
     position: relative;
     background: var(--moon-dark);
@@ -190,7 +190,7 @@
     }
 }
 
-/* 月相部分样式 */
+/* Moon phases section styling - Grid layout for different lunar phases */
 .moon-phases-section {
     margin-bottom: 80px;
 }
@@ -293,7 +293,7 @@
     transform: scale(1.1) rotate(10deg);
 }
 
-/* 为每个月相图片设置特殊效果 */
+/* Special effects for each lunar phase image */
 .phase-item:nth-child(1) .phase-animation {
     background-color: #000;
 }
@@ -323,7 +323,7 @@
     line-height: 1.5;
 }
 
-/* 添加一个360度旋转动画展示 */
+/* 360-degree rotation animation for full moon display */
 .phase-item:hover:nth-child(5) .phase-img,
 .phase-item:hover:nth-child(1) .phase-img {
     animation: rotateFullMoon 8s linear infinite;
@@ -334,7 +334,7 @@
     to { transform: rotate(360deg); }
 }
 
-/* 相向旋转效果 */
+/* Counter-rotation effects for crescent phases */
 .phase-item:nth-child(4) .phase-img,
 .phase-item:nth-child(6) .phase-img {
     transition: transform 0.5s ease;
@@ -348,7 +348,7 @@
     transform: rotate(-20deg);
 }
 
-/* 各种月相样式 */
+/* Various lunar phase styles - Visual representations of moon phases */
 .new-moon {
     background-color: #1a1a2e;
     box-shadow: 0 0 20px rgba(26, 26, 46, 0.5);
@@ -412,7 +412,7 @@
     }
 }
 
-/* 信息卡片网格样式 */
+/* Information card grid styling - Responsive layout for key lunar data */
 .moon-info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -477,7 +477,7 @@
     width: 100%;
 }
 
-/* 事实卡片样式 */
+/* Fact card styling - Grid layout for quick lunar facts */
 .fact-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -507,7 +507,7 @@
     font-size: 1.1rem;
 }
 
-/* 特征卡片样式 */
+/* Feature card styling - Highlighted moon characteristics with icons */
 .impact-container {
     display: grid;
     gap: 20px;
@@ -567,7 +567,7 @@
     line-height: 1.4;
 }
 
-/* 探索卡片样式 */
+/* Exploration card styling - Timeline for lunar missions and discoveries */
 .mission-timeline {
     position: relative;
     padding-left: 30px;
@@ -708,7 +708,7 @@
     line-height: 1.4;
 }
 
-/* 地月系统部分样式 */
+/* Earth-Moon system section styling - Visual representation of orbital mechanics */
 .moon-earth-section {
     max-width: 1000px;
     margin: 0 auto 80px;
@@ -756,7 +756,7 @@
 }
 
 .orbit-path {
-    display: none; /* 隐藏轨道线 */
+    display: none; /* Hide orbit path line */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -803,7 +803,7 @@
     font-size: 1.1rem;
 }
 
-/* 页脚导航样式 */
+/* Footer navigation styling - Page linking buttons with hover effects */
 .footer-navigation {
     display: flex;
     justify-content: center;
@@ -992,7 +992,7 @@
     }
 }
 
-/* 页面加载动画 */
+/* Page loading animation - Smooth fade-in effect when page loads */
 .moon-page {
     animation: fadeIn 1s ease-in;
 }
@@ -1002,7 +1002,7 @@
     to { opacity: 1; }
 }
 
-/* 月球资源部分样式 */
+/* Moon resources section styling - Information about lunar materials and features */
 .moon-resources-section {
     max-width: 1200px;
     margin: 0 auto 80px;
@@ -1052,7 +1052,7 @@
     width: 100%;
 }
 
-/* 地形卡片样式 */
+/* Terrain card styling - Visual representation of lunar surface features */
 .terrain-image {
     width: 100%;
     height: 200px;
@@ -1110,7 +1110,7 @@
     font-weight: bold;
 }
 
-/* 阅读链接卡片样式 */
+/* Reading links card styling - Educational resources about the Moon */
 .reading-links {
     list-style: none;
     padding: 0;
@@ -1145,7 +1145,7 @@
     transform: rotate(45deg);
 }
 
-/* 全景图卡片样式 */
+/* Panorama viewer card styling - Interactive lunar landscape viewers */
 .panorama-viewer {
     position: relative;
     width: 100%;
@@ -1197,7 +1197,7 @@
     text-align: center;
 }
 
-/* 趣味事实卡片样式 */
+/* Fun facts carousel styling - Rotating lunar trivia with navigation dots */
 .fact-carousel {
     position: relative;
     padding: 20px;
@@ -1261,7 +1261,7 @@
     transform: scale(1.3);
 }
 
-/* 响应式调整 */
+/* Responsive adjustments - Layout changes for smaller screen sizes */
 @media (max-width: 992px) {
     .resources-container {
         grid-template-columns: 1fr;

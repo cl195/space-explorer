@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- 设置移动设备视口，确保响应式设计正常工作 -->
+    <!-- Set viewport for mobile devices to ensure responsive design works properly -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solar System - The Sun</title>
-    <!-- 引入主样式表 -->
+    <!-- Import main stylesheet -->
     <link rel="stylesheet" href="styles.css">
-    <!-- 引入太阳页面特定样式 -->
+    <!-- Import Sun page specific styles -->
     <link rel="stylesheet" href="sun-styles.css">
-    <!-- 引入Font Awesome图标库，用于移动菜单图标 -->
+    <!-- Import Font Awesome icon library for mobile menu icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="sun-page">
-    <!-- 顶部导航栏 - 使用sun-nav类添加太阳页面特定样式 -->
+    <!-- Top navigation bar - using sun-nav class for Sun page specific styling -->
     <nav class="top-nav sun-nav">
         <div class="nav-content">
-            <!-- 网站标志/名称 -->
+            <!-- Website logo/name -->
             <div class="logo">Space Explorer</div>
-            <!-- 移动端菜单切换按钮 - 在小屏幕上显示 -->
+            <!-- Mobile menu toggle button - displays on small screens -->
             <button class="mobile-menu-toggle">
-                <!-- 汉堡菜单图标 - 点击时会变成X图标 -->
+                <!-- Hamburger menu icon - transforms to X icon when clicked -->
                 <i class="fas fa-bars"></i>
             </button>
-            <!-- 导航链接容器 - 在移动设备上会隐藏并通过按钮切换显示 -->
+            <!-- Navigation links container - hidden on mobile devices until toggle button is clicked -->
             <div class="nav-links">
-                <!-- 各页面链接，active类表示当前页面 -->
+                <!-- Page links, active class indicates current page -->
                 <a href="index.html" class="structure-link">STRUCTURE</a>
                 <a href="planet.html" class="planet-link">PLANET</a>
                 <a href="sun.html" class="active sun-link">SUN</a>
@@ -224,6 +224,20 @@
             </div>
         </div>
     </div>
+
+    <!-- Source information section -->
+    <footer class="source-information">
+        <div class="container">
+            <p class="sources-text">
+                Images sourced from <a href="https://en.wikipedia.org" target="_blank">Wikipedia</a>, 
+                <a href="https://www.google.com" target="_blank">Google</a> & 
+                <a href="https://tineye.com" target="_blank">Tineye</a> • 
+                Text content adapted from <a href="https://www.perplexity.ai" target="_blank">Perplexity AI</a> •
+                Icons from <a href="https://fontawesome.com" target="_blank">Font Awesome</a>
+            </p>
+        </div>
+    </footer>
+    
     <script src="script.js"></script>
     <script src="sun-script.js"></script>
 </body>

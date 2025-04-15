@@ -1,4 +1,4 @@
-/* 太阳页面特定样式 */
+/* Sun Page Specific Styles - Contains all styling specific to the Sun page of the Solar System website */
 .sun-page {
     background: linear-gradient(to bottom, #000000, #1a0f02);
 }
@@ -8,7 +8,7 @@
     backdrop-filter: blur(10px);
 }
 
-/* 太阳动画 */
+/* Sun Animation Section - Hero area with animated sun visualization and glow effects */
 .sun-hero {
     height: 100vh;
     display: flex;
@@ -76,7 +76,7 @@
     margin-right: auto;
 }
 
-/* 内容样式 */
+/* Main Content Section - Contains all information sections and cards about the Sun */
 .sun-content {
     position: relative;
     z-index: 1;
@@ -111,7 +111,7 @@
     text-shadow: 0 0 10px rgba(255, 119, 0, 0.3);
 }
 
-/* 事实列表样式 */
+/* Fact List Section - Grid layout for key facts about the Sun with hover effects */
 .fact-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -135,7 +135,7 @@
     margin-bottom: 0.5rem;
 }
 
-/* 成分图表样式 */
+/* Composition Chart Section - Visual representation of Sun's elemental composition with gradient bars */
 .composition-chart {
     display: flex;
     flex-direction: column;
@@ -170,7 +170,7 @@
     background: linear-gradient(to right, #ffcc99, #ffe6cc);
 }
 
-/* 层级图样式 */
+/* Layer Diagram Section - Interactive visualization of the Sun's internal structure layers */
 .layers-diagram {
     display: flex;
     flex-direction: column;
@@ -193,7 +193,7 @@
     margin-bottom: 0.5rem;
 }
 
-/* 活动网格样式 */
+/* Activity Grid Section - Grid layout showcasing different types of solar activity */
 .activity-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -212,7 +212,7 @@
     background: rgba(255, 119, 0, 0.2);
 }
 
-/* 导航门户样式 */
+/* Navigation Portal Section - Interactive links to other sections of the Solar System website */
 .navigation-portal {
     display: flex;
     justify-content: center;
@@ -252,7 +252,7 @@
     transform: translateX(100%);
 }
 
-/* 动画 */
+/* Animations - Keyframe definitions for all sun-related animations including pulse, rotate and rays effects */
 @keyframes pulse {
     0% {
         box-shadow: 0 0 120px rgba(255, 119, 0, 0.6), 0 0 80px rgba(255, 179, 102, 0.4), 0 0 200px rgba(255, 119, 0, 0.3);
@@ -292,7 +292,7 @@
     }
 }
 
-/* 介绍部分样式 */
+/* Introduction Section - Centered text area with information about the Sun and its characteristics */
 .sun-introduction {
     max-width: 800px;
     margin: 0 auto 4rem;
@@ -306,7 +306,7 @@
     margin-bottom: 1.5rem;
 }
 
-/* 元素行样式 */
+/* Element Row Styles - Displays chemical elements with interactive hover effects */
 .element-row {
     display: flex;
     align-items: center;
@@ -340,7 +340,7 @@
     margin-bottom: 0.5rem;
 }
 
-/* 温度列表样式 */
+/* Temperature List Section - Grid displaying different temperature zones of the Sun */
 .temp-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -370,7 +370,7 @@
     color: #fff;
 }
 
-/* 速度列表样式 */
+/* Velocity List Section - Information about the Sun's various movement speeds in space */
 .velocity-list {
     display: grid;
     grid-template-columns: 1fr;
@@ -399,7 +399,7 @@
     color: #fff;
 }
 
-/* 位置和邻域部分样式 */
+/* Location and Neighborhood Sections - Information about the Sun's position and surrounding space */
 .sun-location,
 .sun-neighborhood {
     margin-bottom: 4rem;
@@ -449,7 +449,7 @@
     color: #ccc;
 }
 
-/* 元素周期表样式 */
+/* Periodic Table Element Styles - Styled boxes representing chemical elements with atomic information */
 .element-box {
     width: 80px;
     height: 80px;
@@ -491,25 +491,25 @@
     margin-top: 5px;
 }
 
-/* 氢元素特殊样式 */
+/* Hydrogen Element Special Styling - Blue gradient background for the most abundant element */
 .element-row:nth-child(1) .element-box {
     background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(30, 30, 100, 0.7));
     border: 1px solid rgba(100, 100, 255, 0.3);
 }
 
-/* 氦元素特殊样式 */
+/* Helium Element Special Styling - Red gradient background for the second most abundant element */
 .element-row:nth-child(2) .element-box {
     background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(100, 30, 30, 0.7));
     border: 1px solid rgba(255, 100, 100, 0.3);
 }
 
-/* 氧元素特殊样式 */
+/* Oxygen Element Special Styling - Green gradient background for this trace element */
 .element-row:nth-child(3) .element-box {
     background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(30, 100, 30, 0.7));
     border: 1px solid rgba(100, 255, 100, 0.3);
 }
 
-/* 响应式调整 */
+/* Responsive Design Adjustments - Media queries for different screen sizes to ensure mobile compatibility */
 @media (max-width: 1200px) {
     .sun-hero {
         flex-direction: column;

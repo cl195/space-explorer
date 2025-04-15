@@ -1,138 +1,152 @@
-// 动画进度条
-function animateProgressBars() {
-    const bars = document.querySelectorAll('.bar-fill');
-    bars.forEach(bar => {
-        const width = bar.style.width;
+/* 
+ * Sun Page JavaScript - Contains all interactive functionality for the Sun page
+ * This script handles animations, interactive elements, and dynamic content related to the Sun
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Sun page script initialized');
+    
+    // Initialize all Sun page specific functionality
+    initSunPage();
+});
+
+/**
+ * Initializes all Sun page specific functionality
+ * Sets up animations, interactions, and dynamic content
+ */
+function initSunPage() {
+    // Setup composition chart animations
+    setupCompositionCharts();
+    
+    // Initialize interactive elements
+    setupInteractiveElements();
+    
+    // Setup sun animation enhancements
+    enhanceSunAnimation();
+}
+
+/**
+ * Sets up the composition charts with animated loading on scroll
+ * Charts show percentages of different elements in the Sun
+ */
+function setupCompositionCharts() {
+    const chartBars = document.querySelectorAll('.bar-fill');
+    
+    // Reset all bars to 0 width initially
+    chartBars.forEach(bar => {
+        const targetWidth = bar.style.width;
         bar.style.width = '0';
-        setTimeout(() => {
-            bar.style.width = width;
-        }, 500);
+        
+        // Store target width as data attribute
+        bar.dataset.targetWidth = targetWidth;
     });
-}
-
-// 创建太阳光芒效果
-function createSunRays() {
-    const rays = document.querySelector('.sun-rays');
-    const numberOfRays = 12;
     
-    for (let i = 0; i < numberOfRays; i++) {
-        const ray = document.createElement('div');
-        ray.className = 'sun-ray';
-        ray.style.transform = `rotate(${i * (360 / numberOfRays)}deg)`;
-        rays.appendChild(ray);
-    }
-}
-
-// 添加滚动动画
-function handleScroll() {
-    const cards = document.querySelectorAll('.sun-card');
-    const windowHeight = window.innerHeight;
-    
-    cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        if (cardTop < windowHeight * 0.8) {
-            card.classList.add('visible');
-        }
-    });
-}
-
-// 添加鼠标移动效果
-function handleMouseMove(e) {
-    const sunCore = document.querySelector('.sun-core');
-    const rect = sunCore.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    const deltaX = (e.clientX - centerX) / 30;
-    const deltaY = (e.clientY - centerY) / 30;
-    
-    sunCore.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-}
-
-// 添加滚动动画
-function addScrollAnimations() {
-    const elements = document.querySelectorAll('.temp-item, .velocity-item, .element-row');
+    // Set up scroll observer to animate bars when visible
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                const bar = entry.target;
+                // Animate to target width
+                setTimeout(() => {
+                    bar.style.width = bar.dataset.targetWidth;
+                }, 200);
+                // Stop observing after animation
+                observer.unobserve(bar);
             }
         });
-    }, { threshold: 0.1 });
-
-    elements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'all 0.6s ease-out';
-        observer.observe(element);
-    });
-}
-
-// 添加图片悬停效果
-function addImageHoverEffects() {
-    const images = document.querySelectorAll('.location-image img, .neighborhood-image img');
-    images.forEach(img => {
-        img.addEventListener('mousemove', (e) => {
-            const rect = e.target.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const xPercent = (x / rect.width - 0.5) * 20;
-            const yPercent = (y / rect.height - 0.5) * 20;
-            
-            e.target.style.transform = `perspective(1000px) rotateX(${-yPercent}deg) rotateY(${xPercent}deg) scale(1.1)`;
-        });
-        
-        img.addEventListener('mouseleave', (e) => {
-            e.target.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-        });
-    });
-}
-
-// 添加元素图标动画
-function addElementIconAnimations() {
-    const elementBoxes = document.querySelectorAll('.element-box');
+    }, { threshold: 0.5 });
     
-    elementBoxes.forEach(box => {
-        box.addEventListener('mouseenter', () => {
-            const symbol = box.querySelector('.element-symbol');
-            symbol.style.transform = 'scale(1.2)';
-            symbol.style.textShadow = '0 0 15px rgba(255, 255, 255, 0.8)';
-        });
-        
-        box.addEventListener('mouseleave', () => {
-            const symbol = box.querySelector('.element-symbol');
-            symbol.style.transform = 'scale(1)';
-            symbol.style.textShadow = '0 0 10px rgba(255, 255, 255, 0.5)';
+    // Observe each chart bar
+    chartBars.forEach(bar => {
+        observer.observe(bar);
+    });
+    
+    console.log('Composition charts initialized');
+}
+
+/**
+ * Sets up interactive elements on the Sun page
+ * Includes hover effects, tooltips, and click interactions
+ */
+function setupInteractiveElements() {
+    // Add click event listeners to fact items for enhanced interaction
+    const factItems = document.querySelectorAll('.fact-item');
+    factItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Toggle active state
+            this.classList.toggle('active');
         });
     });
     
-    // 添加元素符号闪烁效果
-    const symbols = document.querySelectorAll('.element-symbol');
-    symbols.forEach(symbol => {
-        setInterval(() => {
-            symbol.style.textShadow = '0 0 20px rgba(255, 255, 255, 0.8)';
+    // Set up portal link hover effects
+    const portalLinks = document.querySelectorAll('.portal-link');
+    portalLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            // Add custom hover effect
+            this.classList.add('hover-effect');
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            // Remove custom hover effect
+            this.classList.remove('hover-effect');
+        });
+    });
+    
+    console.log('Interactive elements initialized');
+}
+
+/**
+ * Enhances the Sun animation with additional dynamic effects
+ * Adds particle effects, flares, and responsive behavior
+ */
+function enhanceSunAnimation() {
+    const sunCore = document.querySelector('.sun-core');
+    const sunRays = document.querySelector('.sun-rays');
+    
+    if (!sunCore || !sunRays) {
+        console.warn('Sun animation elements not found');
+        return;
+    }
+    
+    // Add random flare effect occasionally
+    setInterval(() => {
+        if (Math.random() > 0.7) {
+            sunCore.classList.add('flare');
             setTimeout(() => {
-                symbol.style.textShadow = '0 0 10px rgba(255, 255, 255, 0.5)';
-            }, 200);
-        }, 3000 + Math.random() * 2000); // 随机间隔时间，使闪烁不同步
-    });
+                sunCore.classList.remove('flare');
+            }, 500);
+        }
+    }, 3000);
+    
+    // Add responsive behavior to sun animation
+    window.addEventListener('resize', adjustSunSize);
+    adjustSunSize(); // Initial adjustment
+    
+    console.log('Sun animation enhancements applied');
 }
 
-// 初始化
-document.addEventListener('DOMContentLoaded', () => {
-    createSunRays();
-    animateProgressBars();
-    handleScroll();
+/**
+ * Adjusts the sun size based on viewport dimensions
+ * Ensures the sun appears properly on different screen sizes
+ */
+function adjustSunSize() {
+    const sunAnimation = document.querySelector('.sun-animation');
+    if (!sunAnimation) return;
     
-    // 添加滚动监听
-    window.addEventListener('scroll', handleScroll);
+    const viewportWidth = window.innerWidth;
     
-    // 添加鼠标移动监听
-    document.addEventListener('mousemove', handleMouseMove);
-    
-    addScrollAnimations();
-    addImageHoverEffects();
-    addElementIconAnimations();
-}); 
+    // Adjust size based on viewport width
+    if (viewportWidth < 768) {
+        // Mobile size
+        sunAnimation.style.width = '280px';
+        sunAnimation.style.height = '280px';
+    } else if (viewportWidth < 1200) {
+        // Tablet size
+        sunAnimation.style.width = '400px';
+        sunAnimation.style.height = '400px';
+    } else {
+        // Desktop size - reset to default
+        sunAnimation.style.width = '550px';
+        sunAnimation.style.height = '550px';
+    }
+} 

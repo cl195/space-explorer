@@ -1,47 +1,47 @@
-// 月球页面专用脚本
+// Specialized JavaScript for the Moon page - Handles animations, parallax effects, and interactive elements
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 初始化页面
+    // Initialize the main page components
     initMoonPage();
     
-    // 添加滚动监听
+    // Add scroll event listener for parallax and animation effects
     window.addEventListener('scroll', handleMoonScroll);
     
-    // 初始触发一次滚动处理
+    // Trigger scroll handler once initially to set starting positions
     handleMoonScroll();
     
-    // 初始化视差效果
+    // Initialize parallax effects for mouse movement
     moonParallaxEffect();
     
-    // 初始化月相动画
+    // Set up lunar phase animations and interactions
     initPhaseAnimations();
     
-    // 初始化时间线交互
+    // Initialize timeline interaction for historical events
     initTimelineInteraction();
     
-    // 初始化事实轮播功能
+    // Set up rotating fact carousel functionality
     initFactCarousel();
     
-    // 初始化全景图查看功能
+    // Initialize panoramic image viewer capabilities
     initPanoramaViewer();
 });
 
-// 初始化月球页面
+// Initialize the Moon page with entry animations and card effects
 function initMoonPage() {
     console.log('Moon page initialized');
     
-    // 添加页面入场动画
+    // Add page entry fade-in animation
     document.body.classList.add('fade-in');
     
-    // 初始化卡片浮动效果
+    // Initialize floating animation effect for information cards
     initCardFloating();
 }
 
-// 处理月球页面滚动效果
+// Handle scroll-based effects and animations for the Moon page
 function handleMoonScroll() {
     const scrollPosition = window.scrollY;
     
-    // 视差效果处理
+    // Process parallax effects for multiple layers
     const moonHero = document.querySelector('.moon-hero');
     const moonImage = document.querySelector('.moon-image');
     const starsLayer = document.querySelector('.stars-layer');
@@ -51,23 +51,23 @@ function handleMoonScroll() {
         const heroHeight = moonHero.offsetHeight;
         const scrollRatio = Math.min(scrollPosition / heroHeight, 1);
         
-        // 月亮上移效果
+        // Moon upward movement effect based on scroll position
         moonImage.style.transform = `translateY(calc(-50% - ${scrollRatio * 30}px))`;
         
-        // 云层速度调整
+        // Adjust cloud layer animation speed based on scroll position
         cloudsLayer.style.animationDuration = `${60 - scrollRatio * 20}s`;
         
-        // 星星层视差
+        // Stars layer parallax movement
         starsLayer.style.transform = `translateY(${scrollRatio * 50}px)`;
     }
     
-    // 检测并触发元素动画
+    // Detect and trigger element animations when scrolled into view
     animateOnScroll('.moon-card', 'card-visible', 0.8);
     animateOnScroll('.moon-earth-section', 'section-visible', 0.7);
     animateOnScroll('.footer-navigation', 'nav-visible', 0.9);
 }
 
-// 滚动到视图中时添加动画类
+// Add animation classes to elements when they scroll into the viewport
 function animateOnScroll(selector, className, threshold = 0.8) {
     const elements = document.querySelectorAll(selector);
     const windowHeight = window.innerHeight;
@@ -82,7 +82,7 @@ function animateOnScroll(selector, className, threshold = 0.8) {
     });
 }
 
-// 月球页面视差效果
+// Create parallax effects for moon elements based on mouse movement
 function moonParallaxEffect() {
     const moonParallax = document.querySelector('.moon-parallax');
     
@@ -95,20 +95,20 @@ function moonParallaxEffect() {
             const starsLayer = document.querySelector('.stars-layer');
             
             if (moonImage && starsLayer) {
-                // 月亮轻微移动
+                // Subtle moon movement following cursor position
                 const moveX = (mouseX - 0.5) * 20;
                 const moveY = (mouseY - 0.5) * 20;
                 
                 moonImage.style.transform = `translateY(-50%) translate(${moveX}px, ${moveY}px)`;
                 
-                // 星星层反向移动
+                // Opposite movement for stars layer to enhance depth effect
                 starsLayer.style.transform = `translate(${-moveX * 0.5}px, ${-moveY * 0.5}px)`;
             }
         });
     }
 }
 
-// 初始化月相动画
+// Initialize lunar phase animations and hover effects
 function initPhaseAnimations() {
     const phaseItems = document.querySelectorAll('.phase-item');
     
@@ -118,19 +118,19 @@ function initPhaseAnimations() {
         
         if (phase) {
             item.addEventListener('mouseenter', () => {
-                // 添加悬停时的脉动效果
+                // Add pulsating effect on hover
                 phase.style.transform = 'scale(1.1)';
                 phase.style.boxShadow = '0 0 30px rgba(143, 184, 255, 0.5)';
                 phase.style.transition = 'all 0.3s ease';
                 
-                // 为特定的月相添加特殊效果
+                // Add special effects for specific lunar phases
                 if (item.querySelector('h3').textContent === 'Full Moon') {
                     phaseImg.style.filter = 'brightness(1.2)';
                 }
             });
             
             item.addEventListener('mouseleave', () => {
-                // 恢复原始状态
+                // Restore original state when mouse leaves
                 phase.style.transform = 'scale(1)';
                 phase.style.boxShadow = '0 0 20px rgba(143, 184, 255, 0.2)';
                 
@@ -141,7 +141,7 @@ function initPhaseAnimations() {
         }
     });
     
-    // 为月相图片添加加载完成后的过渡效果
+    // Add fade-in transition effect for phase images after loading
     const phaseImages = document.querySelectorAll('.phase-img');
     phaseImages.forEach(img => {
         img.addEventListener('load', () => {
@@ -152,31 +152,31 @@ function initPhaseAnimations() {
             }, 100);
         });
         
-        // 如果图片已经在缓存中，则手动触发加载事件
+        // If image is already in cache, manually set opacity
         if (img.complete) {
             img.style.opacity = '1';
         }
     });
     
-    // 添加月相循环动画
+    // Set up lunar phase sequence animation
     setupPhaseSequence();
 }
 
-// 设置月相序列动画
+// Configure the animated sequence showing lunar phase progression
 function setupPhaseSequence() {
     const moonPhasesSection = document.querySelector('.moon-phases-section');
     
     if (moonPhasesSection) {
-        // 当滚动到月相部分时，添加序列动画
+        // Add sequence animation when scrolled to the lunar phases section
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const phaseItems = document.querySelectorAll('.phase-item');
                     
-                    // 依次高亮每个月相，模拟月相变化
+                    // Highlight each phase in sequence to simulate lunar cycle
                     let currentIndex = 0;
                     const highlightInterval = setInterval(() => {
-                        // 重置所有项
+                        // Reset all phase items to default state
                         phaseItems.forEach(item => {
                             item.style.transform = 'translateY(0)';
                             item.style.borderColor = 'rgba(194, 197, 204, 0.1)';
@@ -186,7 +186,7 @@ function setupPhaseSequence() {
                             }
                         });
                         
-                        // 高亮当前项
+                        // Highlight the current phase in the sequence
                         if (phaseItems[currentIndex]) {
                             phaseItems[currentIndex].style.transform = 'translateY(-10px)';
                             phaseItems[currentIndex].style.borderColor = 'var(--moon-accent)';
@@ -198,11 +198,11 @@ function setupPhaseSequence() {
                         
                         currentIndex = (currentIndex + 1) % phaseItems.length;
                         
-                        // 5秒后停止循环
+                        // 5 seconds after stopping the loop
                         if (currentIndex === 0) {
                             setTimeout(() => {
                                 clearInterval(highlightInterval);
-                                // 重置所有项
+                                // Reset all items to default state
                                 phaseItems.forEach(item => {
                                     item.style.transform = 'translateY(0)';
                                     item.style.borderColor = 'rgba(194, 197, 204, 0.1)';
@@ -215,7 +215,7 @@ function setupPhaseSequence() {
                         }
                     }, 600);
                     
-                    // 取消观察
+                    // Cancel observation
                     observer.disconnect();
                 }
             });
@@ -227,21 +227,21 @@ function setupPhaseSequence() {
     }
 }
 
-// 初始化卡片浮动效果
+// Initialize floating animation effect for information cards
 function initCardFloating() {
     const cards = document.querySelectorAll('.moon-card');
     
     cards.forEach((card, index) => {
-        // 设置不同的初始延迟，让卡片看起来像是自然浮动
+        // Set different initial delays to make cards look like natural floating
         const delay = index * 0.1;
         card.style.animationDelay = `${delay}s`;
         
-        // 添加浮动动画
+        // Add floating animation
         card.style.animation = `floatingCard 4s infinite ease-in-out ${delay}s`;
     });
 }
 
-// 为CSS添加浮动动画
+// Add floating animation to CSS
 const floatingStyle = document.createElement('style');
 floatingStyle.textContent = `
     @keyframes floatingCard {
@@ -295,20 +295,20 @@ floatingStyle.textContent = `
 `;
 document.head.appendChild(floatingStyle);
 
-// 初始化时间线交互
+// Initialize timeline interaction for historical events
 function initTimelineInteraction() {
     const timelineItems = document.querySelectorAll('.timeline-item');
     
     timelineItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
-            // 高亮当前项目
+            // Highlight the current project
             item.style.backgroundColor = 'rgba(143, 184, 255, 0.1)';
             item.style.borderRadius = '8px';
             item.style.padding = '10px';
             item.style.marginLeft = '10px';
             item.style.transition = 'all 0.3s ease';
             
-            // 将其他项目变暗
+            // Darken other projects
             timelineItems.forEach(otherItem => {
                 if (otherItem !== item) {
                     otherItem.style.opacity = '0.5';
@@ -318,7 +318,7 @@ function initTimelineInteraction() {
         });
         
         item.addEventListener('mouseleave', () => {
-            // 恢复所有项目的原始状态
+            // Restore original state of all projects
             item.style.backgroundColor = 'transparent';
             item.style.padding = '0';
             item.style.marginLeft = '0';
@@ -330,7 +330,7 @@ function initTimelineInteraction() {
     });
 }
 
-// 地月系统动画效果
+// Lunar system animation effect
 window.addEventListener('load', () => {
     const earthMoonSection = document.querySelector('.earth-moon-section');
     
@@ -338,15 +338,15 @@ window.addEventListener('load', () => {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // 当区域可见时，添加特殊效果
+                    // When the area is visible, add special effect
                     const earth = document.querySelector('.earth');
                     const moonOrbital = document.querySelector('.moon-orbital');
                     
                     if (earth) {
-                        // 地球旋转动画
+                        // Earth rotation animation
                         earth.style.animation = 'earthRotate 20s linear infinite';
                         
-                        // 为CSS添加地球旋转动画
+                        // Add CSS animation for earth rotation
                         const earthStyle = document.createElement('style');
                         earthStyle.textContent = `
                             @keyframes earthRotate {
@@ -358,11 +358,11 @@ window.addEventListener('load', () => {
                     }
                     
                     if (moonOrbital) {
-                        // 突出显示月球轨道
+                        // Highlight lunar orbit
                         moonOrbital.style.boxShadow = '0 0 20px var(--moon-accent)';
                     }
                     
-                    // 取消观察
+                    // Cancel observation
                     observer.disconnect();
                 }
             });
@@ -374,20 +374,20 @@ window.addEventListener('load', () => {
     }
 });
 
-// 处理页面离开动画
+// Handle page exit animation
 document.querySelectorAll('a').forEach(link => {
     if (!link.classList.contains('moon-link')) {
         link.addEventListener('click', function(e) {
             const targetHref = this.getAttribute('href');
             
-            // 仅当链接指向网站内的其他页面时执行
+            // Execute only when the link points to another page within the site
             if (targetHref && targetHref.indexOf('#') !== 0 && !targetHref.match(/^https?:\/\//)) {
                 e.preventDefault();
                 
-                // 添加离开动画
+                // Add exit animation
                 document.body.classList.add('fade-out');
                 
-                // 动画结束后跳转
+                // Redirect after animation ends
                 setTimeout(() => {
                     window.location.href = targetHref;
                 }, 500);
@@ -396,7 +396,7 @@ document.querySelectorAll('a').forEach(link => {
     }
 });
 
-// 为CSS添加离开动画
+// Add exit animation to CSS
 const leaveStyle = document.createElement('style');
 leaveStyle.textContent = `
     .fade-out {
@@ -409,25 +409,25 @@ leaveStyle.textContent = `
 `;
 document.head.appendChild(leaveStyle);
 
-// 初始化事实轮播功能
+// Set up rotating fact carousel functionality
 function initFactCarousel() {
     const factSlides = document.querySelectorAll('.fact-slide');
     const factDots = document.querySelectorAll('.fact-dot');
     
     if (factSlides.length > 0 && factDots.length > 0) {
-        // 自动轮播
+        // Automatic rotation
         let currentIndex = 0;
         const slideInterval = setInterval(() => {
             currentIndex = (currentIndex + 1) % factSlides.length;
             updateFactSlide();
         }, 5000);
         
-        // 点击导航点切换事实
+        // Click navigation point to switch facts
         factDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 currentIndex = index;
                 updateFactSlide();
-                // 重置自动轮播计时器
+                // Reset automatic rotation timer
                 clearInterval(slideInterval);
                 setTimeout(() => {
                     setInterval(() => {
@@ -438,7 +438,7 @@ function initFactCarousel() {
             });
         });
         
-        // 更新事实轮播
+        // Update fact rotation
         function updateFactSlide() {
             factSlides.forEach((slide, index) => {
                 slide.classList.remove('active');
@@ -453,14 +453,14 @@ function initFactCarousel() {
     }
 }
 
-// 初始化全景图查看功能
+// Initialize panoramic image viewer capabilities
 function initPanoramaViewer() {
     const panoramaOverlay = document.querySelector('.panorama-overlay');
     const panoramaImage = document.querySelector('.panorama-viewer img');
     
     if (panoramaOverlay && panoramaImage) {
         panoramaOverlay.addEventListener('click', () => {
-            // 创建全屏预览元素
+            // Create full screen preview element
             const fullScreenView = document.createElement('div');
             fullScreenView.classList.add('fullscreen-panorama');
             fullScreenView.innerHTML = `
@@ -470,16 +470,16 @@ function initPanoramaViewer() {
                 <img src="${panoramaImage.src}" alt="Lunar Panorama Fullscreen">
             `;
             
-            // 添加到body
+            // Add to body
             document.body.appendChild(fullScreenView);
             document.body.style.overflow = 'hidden';
             
-            // 淡入效果
+            // Fade in effect
             setTimeout(() => {
                 fullScreenView.style.opacity = '1';
             }, 10);
             
-            // 关闭全屏预览
+            // Close full screen preview
             const closeButton = fullScreenView.querySelector('.fullscreen-close');
             closeButton.addEventListener('click', () => {
                 fullScreenView.style.opacity = '0';
@@ -492,7 +492,7 @@ function initPanoramaViewer() {
     }
 }
 
-// 为全屏预览添加样式
+// Add styles for full screen preview
 const panoramaStyle = document.createElement('style');
 panoramaStyle.textContent = `
     .fullscreen-panorama {
